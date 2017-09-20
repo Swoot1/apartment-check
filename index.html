@@ -122,7 +122,7 @@
         <script type="text/x-tmpl" id="checklist-list">
             <ul>
                 {% for (var i=0; i<o.length; i++) { %}
-                    <li>{%=o[i].name%} <span class="js-delete-checklist clickable" data-checklist-id="{%=o[i].id%}">[X]</span></li>
+                    <li>{%=o[i].name%} <span class="js-delete-checklist clickable" data-checklist-id="{%=o[i].id%}">[X]</span> <span class="js-edit-checklist clickable" data-checklist-id="{%=o[i].id%}">Redigera</span></li>
                 {% } %}
             </ul>
         </script>

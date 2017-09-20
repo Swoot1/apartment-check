@@ -76,14 +76,26 @@
            
             document.querySelector('.checklist-list').innerHTML = tmpl('checklist-list', templateFriendlyChecklists);
             
-            let deleteButtons = document.querySelector('.js-delete-checklist');
-                if(deleteButtons){
-                    deleteButtons.addEventListener('click', (e) => {
+            let deleteButtons = document.querySelectorAll('.js-delete-checklist');
+            deleteButtons.forEach((deleteButton) => {
+                deleteButton.addEventListener('click', (e) => {
                     let id = e.target.dataset.checklistId;
                     let checklistToBeDeletedRef = firebase.database().ref('users/' + userId + '/checklists/' + id);
                     checklistToBeDeletedRef.remove();
                 });
-            }
+            });
+            
+            
+            let editButtons = document.querySelectorAll('.js-edit-checklist');
+            editButtons.forEach((editButton) => {
+                editButton.addEventListener('click', (e) => {
+                    let id = e.target.dataset.checklistId;
+                    let checklistToBeEditedRef = firebase.database().ref('users/' + userId + '/checklists/' + id);
+                    checklistToBeEditedRef.once('value', (snapshot) => {
+                        console.log(snapshot.val());
+                    }); 
+                });
+            });
         });
     });
 
