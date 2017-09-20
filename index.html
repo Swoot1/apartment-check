@@ -10,9 +10,10 @@
               href="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.css" />
     </head>
     <body>
-     <input type="button" class="signout" value="Logga ut" />
+        <input type="button" 
+               class="signout" 
+               value="Logga ut" />
         <div class="content"></div>
-        <div class="checklist-list"></div>
         <script src="navigo.min.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase-app.js"></script>
@@ -20,11 +21,18 @@
         <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase-database.js"></script>
         <script src="check-list.js"></script>
         <script src="tmpl.min.js"></script>
-        <script type="text/x-tmpl" id="checklist">
+        <script type="text/x-tmpl" 
+                id="checklist">
             <label>
-                Ge din lista ett namn för att lättare komma ihåg den 
+                List-namn
                 <br>
                 <input type="text" class="js-checklist-name" />
+            </label>
+            <br>
+            <label>
+                Länk till Hemnet/Blocket
+                <br>
+                <input type="text" class="js-checklist-ad-url" />
             </label>
             {% for (var i=0; i<o.length; i++) { %}
                 <div class="list-item js-list-item">
@@ -44,7 +52,8 @@
                    type="button" 
                    value="Spara" />
         </script>
-        <script type="text/x-tmpl" id="checklist-list">
+        <script type="text/x-tmpl" 
+                id="checklist-list">
             <ul>
                 {% for (var i=0; i<o.length; i++) { %}
                     <li>{%=o[i].name%} <span class="js-delete-checklist clickable" data-checklist-id="{%=o[i].id%}">[X]</span> <span class="js-edit-checklist clickable" data-checklist-id="{%=o[i].id%}">Redigera</span></li>
