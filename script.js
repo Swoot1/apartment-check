@@ -9,6 +9,8 @@
     };
     firebase.initializeApp(config);
 
+
+
     // FirebaseUI config.
     var uiConfig = {
         signInSuccessUrl: '#checklists/new',
@@ -19,10 +21,24 @@
         tosUrl: '<your-tos-url>' // TODO
     };
 
+
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
     var root = null;
-    var useHash = true; // Defaults to: false
+    var useHash = true;
     var router = new Navigo(root, useHash);
+
+    router.hooks({
+      before: function(done) {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            window.currentUser = user;
+          } else {
+            window.currentUser = null;
+          }
+          done();
+        });
+      }
+    });
 
     router
       .on({
@@ -54,7 +70,7 @@
 
                 document.querySelector('.js-save-checklist').addEventListener('click', () => {
                     let checklist = collectData();
-                    writeUserChecklist(firebase.auth().currentUser.uid, checklist);
+                    writeUserChecklist(window.currentUser.uid, checklist);
                 });
 
                 function collectData(){
@@ -92,7 +108,7 @@
             });
           },
           'checklists/:id': function(params){
-            let userId = firebase.auth().currentUser.uid;
+            let userId = window.currentUser.uid;
             let checklistToBeEditedRef = firebase.database().ref('users/' + userId + '/checklists/' + params.id);
                 checklistToBeEditedRef.once('value', (snapshot) => {
                 // TODO svaret måste mappas pga av objekt istället för arrayer i firebase.
@@ -100,7 +116,7 @@
             }); 
           },
           'checklists': function(params){
-            let userId = firebase.auth().currentUser.uid;
+            let userId = window.currentUser.uid;
             let checklistsRef = firebase.database().ref('users/' + userId + '/checklists');
                 checklistsRef.on('value', (snapshot) => {
                 let checklists = snapshot.val();
@@ -137,7 +153,7 @@
         firebase.auth().signOut().then(function() {
           router.navigate('/login');
         }).catch(function(error) {
-          // An error happened.
+          // An error happened. :(
         });
     });
 })();
