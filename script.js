@@ -47,7 +47,12 @@
             var defaultCheckListRef = firebase.database()
                                               .ref('default-checklist');
             defaultCheckListRef.once('value', function(snapshot) {
-                                                document.querySelector('.content').innerHTML = tmpl('checklist', snapshot.val());
+                                                let newList = {
+                                                                name: '',
+                                                                adUrl: '',
+                                                                checkItems: snapshot.val()
+                                                                };
+                                                document.querySelector('.content').innerHTML = tmpl('checklist', newList);
                                                 addEventListeners();
                                               });
             
