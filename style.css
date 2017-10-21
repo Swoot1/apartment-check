@@ -64,6 +64,11 @@ body {
 .clickable {
     cursor: pointer;
 }
+
+.check-list {
+    margin-bottom: 100px;
+}
+
 .check-list li {
     padding: 20px 10px;
     border-bottom: 1px solid #1CA5B8;
