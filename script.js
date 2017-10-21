@@ -143,7 +143,7 @@
                 .forEach((element) => {
                     let listItem = {};
                     listItem.description = element.querySelector('.js-description').innerHTML;
-                    listItem.meetsRequirements = element.querySelector('.js-meets-requirements').value === 'on';
+                    listItem.meetsRequirements = element.querySelector('.js-meets-requirements').checked;
                     listItem.comment = element.querySelector('.js-comment').value;
                     checklist.checkItems.push(listItem);
                 });
