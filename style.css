@@ -1,9 +1,91 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* End of css-reset */
+
+.container {
+    margin: auto;
+}
+body {
+    font-family: Helvetica;
+    color: #012C40;
+}
 .hidden {
     display: none;
 }
 .list-item {
-    margin: 20px 10px;
+    margin: 20px 0;
 }
 .clickable {
     cursor: pointer;
+}
+.check-list li {
+    padding: 20px 10px;
+    border-bottom: 1px solid #1CA5B8;
+    color: #012C40;
+}
+.nav-bar {
+    background: #00708C;
+    min-height: 100px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+.nav-bar i.fa{
+    font-size: 50px;
+    color: #DAEBF2;
+    margin-bottom: 10px;
+}
+.nav-bar a, .nav-bar a:visited, .nav-bar a:focus, .nav-bar a:hover, .nav-bar a:active {
+    color: #DAEBF2;
+    text-decoration: none;
+}
+.nav-bar ul li { 
+    float: left;
+    margin: 10px 20px;
 }

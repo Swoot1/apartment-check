@@ -2,18 +2,33 @@
     <head>
         <meta charset="utf-8">
         <meta lang="sv">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="style.css" 
               type="text/css" 
               rel="stylesheet" />
         <link type="text/css" 
               rel="stylesheet" 
               href="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.css" />
+        <link type="text/css" 
+              rel="stylesheet" 
+              href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     </head>
     <body>
-        <input type="button" 
-               class="signout" 
-               value="Logga ut" />
-        <div class="content"></div>
+        <div class="container">
+           <div class="content"></div>
+           <div class="nav-bar">
+                <ul>
+                    <li><a href="/#/checklists/new"><i class="fa fa-file-o"></i><br>Skapa ny</a></li>
+                    <li><a href="/#/checklists"><i class="fa fa-list"></i><br>Visa alla</a></li>
+                    <li>
+                       <a href="/#/login" class="js-signout">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <br>Logga ut
+                       </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <script src="navigo.min.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase-app.js"></script>
@@ -24,27 +39,31 @@
         <script type="text/x-tmpl" 
                 id="checklist">
             <label>
-                List-namn
+                Namn
                 <br>
-                <input type="text" class="js-checklist-name" />
+                <input type="text" 
+                       class="js-checklist-name" 
+                       value="{%=o.name%}" />
             </label>
             <br>
             <label>
-                Länk till Hemnet/Blocket
+                Länk till annons
                 <br>
-                <input type="text" class="js-checklist-ad-url" />
+                <input type="text" 
+                       class="js-checklist-ad-url" 
+                       value="{%=o.adUrl%}"/>
             </label>
-            {% for (var i=0; i<o.length; i++) { %}
+            {% for (var i=0; i<o.checkItems.length; i++) { %}
                 <div class="list-item js-list-item">
-                    <span class="js-description">{%=o[i].description%}</span>
+                    <span class="js-description">{%=o.checkItems[i].description%}</span>
                     <input type="checkbox"
-                           class="js-meets-requirements" {% if (o[i].meetsRequirements === true) { %} checked{% } else { %}{% } %} />
+                           class="js-meets-requirements" {% if (o.checkItems[i].meetsRequirements === true) { %} checked{% } else { %}{% } %} />
                     <br>
                     <div class="comment-section">
                         <span class="js-show-comment clickable">Skriv kommentar</span>
                         <span class="js-hide-comment hidden clickable">Dölj kommentar</span>
                         <br>
-                        <textarea class="hidden js-comment">{%=o[i].comment%}</textarea>
+                        <textarea class="hidden js-comment">{%=o.checkItems[i].comment%}</textarea>
                     </div>
                 </div>
             {% } %}
@@ -54,9 +73,9 @@
         </script>
         <script type="text/x-tmpl" 
                 id="checklist-list">
-            <ul>
+            <ul class="check-list">
                 {% for (var i=0; i<o.length; i++) { %}
-                    <li>{%=o[i].name%} <span class="js-delete-checklist clickable" data-checklist-id="{%=o[i].id%}">[X]</span> <span class="js-edit-checklist clickable" data-checklist-id="{%=o[i].id%}">Redigera</span></li>
+                    <li class="js-edit-checklist clickable" data-checklist-id="{%=o[i].id%}">{%=o[i].name%} <i class="fa fa-trash-o js-delete-checklist clickable" data-checklist-id="{%=o[i].id%}"></i></li>
                 {% } %}
             </ul>
         </script>
