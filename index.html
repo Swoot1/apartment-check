@@ -16,14 +16,6 @@
     <body>
         <div class="container">
             <div class="content"></div>
-            <div class="nav-bar">
-                <a href="/#/login" class="js-signout">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i>
-                    <br>Logga ut
-                </a>
-                <a href="/#/checklists"><i class="fa fa-list"></i><br>Visa alla</a>
-                <a href="/#/checklists/new"><i class="fa fa-file-o"></i><br>Skapa ny</a>
-            </div>
         </div>
         <script src="navigo.min.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
@@ -105,6 +97,13 @@
                     <li class="js-view-checklist clickable" data-checklist-id="{%=o[i].id%}">{%=o[i].name%}</li>
                 {% } %}
             </ul>
+            <div class="nav-bar">
+                <a href="/#/login" class="js-signout">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <br>Logga ut
+                </a>
+                <a href="/#/checklists/new"><i class="fa fa-file-o"></i><br>Skapa ny</a>
+            </div>
         </script>
         <script src="script.js"></script>
     </body>
