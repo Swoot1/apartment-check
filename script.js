@@ -56,8 +56,16 @@
                                                 addEventListeners();
                                               });
             
-          },
+      },
       'checklists/:id': function(params){
+        let userId = window.currentUser.uid;
+        let checklistToBeEditedRef = firebase.database().ref('users/' + userId + '/checklists/' + params.id);
+            checklistToBeEditedRef.once('value', (snapshot) => {
+            document.querySelector('.content').innerHTML = tmpl('checklist-summary', snapshot.val());
+            addEventListeners();
+        });
+      },
+      'checklists/:id/edit': function(params){
         let userId = window.currentUser.uid;
         let checklistToBeEditedRef = firebase.database().ref('users/' + userId + '/checklists/' + params.id);
             checklistToBeEditedRef.once('value', (snapshot) => {
@@ -86,16 +94,6 @@
                     router.navigate('/checklists/' + id);
                 });
             });
-
-            let deleteButtons = document.querySelectorAll('.js-delete-checklist');
-            deleteButtons.forEach((deleteButton) => {
-                deleteButton.addEventListener('click', (e) => {
-                    let id = e.target.dataset.checklistId;
-                    let checklistToBeDeletedRef = firebase.database().ref('users/' + userId + '/checklists/' + id);
-                    checklistToBeDeletedRef.remove();
-                    e.stopPropagation();
-                });
-            });
         }); 
       }
     }).resolve();
@@ -111,30 +109,22 @@
             });
     
     function addEventListeners() {
-        document.querySelector('.js-save-checklist')
-                .addEventListener('click', () => {
-                    let checklist = collectData();
-                    writeUserChecklist(window.currentUser.uid, checklist);
-                });
-                
-        document.querySelectorAll('.js-hide-comment')
-                .forEach((element) => {
-                    element.addEventListener('click', (e) => {
-                                                            let commentInput = e.target.parentElement.querySelector('.js-comment');
-                                                            commentInput.className += ' hidden';
-                                                            e.target.className += ' hidden';
-                                                            e.target.parentElement.querySelector('.js-show-comment').classList.remove('hidden');
-                                                        });
+        let saveButtons = document.querySelectorAll('.js-save-checklist')
+        saveButtons.forEach((saveButton) => {
+            saveButton.addEventListener('click', () => {
+            let checklist = collectData();
+            writeUserChecklist(window.currentUser.uid, checklist);
         });
-        
-        document.querySelectorAll('.js-show-comment')
-                .forEach((element) => {
-                    element.addEventListener('click', (e) => {
-                    let commentInput = e.target.parentElement.querySelector('.js-comment');
-                    commentInput.classList.remove('hidden');
-                    e.target.className += ' hidden';
-                    e.target.parentElement.querySelector('.js-hide-comment').classList.remove('hidden');
-                });
+        });
+        let deleteButtons = document.querySelectorAll('.js-delete-checklist');
+        deleteButtons.forEach((deleteButton) => {
+            deleteButton.addEventListener('click', (e) => {
+                let userId = window.currentUser.uid;
+                let id = e.target.dataset.checklistId;
+                let checklistToBeDeletedRef = firebase.database().ref('users/' + userId + '/checklists/' + id);
+                checklistToBeDeletedRef.remove();
+                e.stopPropagation();
+            });
         });
     }
     

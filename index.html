@@ -33,8 +33,36 @@
         <script src="check-list.js"></script>
         <script src="tmpl.min.js"></script>
         <script type="text/x-tmpl" 
-                id="checklist">
+                id="checklist-summary">
+            <div class="page-header"><a href="/#/checklists"><i class="fa fa-arrow-left"></i></a></div>
             <div class="page">
+                {% if (o.adUrl && o.adUrl.length) { %} 
+                    <a href="{%=o.adUrl%}">{%=o.name%}</a>
+                {% } else { %}
+                    {%=o.name%}
+                {% } %}
+                {% for (var i=0; i<o.checkItems.length; i++) { %}
+                    <div class="list-item js-list-item">
+                        <label>
+                            <span class="js-description">{%=o.checkItems[i].description%}</span>
+                            {% if (o.checkItems[i].meetsRequirements === true) { %} OK!{% } else { %}Ej ok{% } %}
+                        </label>
+                        <br>
+                        <div>
+                            {%=o.checkItems[i].comment%}
+                        </div>
+                    </div>
+                {% } %}
+                <input class="delete js-delete-checklist" 
+                       type="button" 
+                       value="Radera"
+                       data-checklist-id="{%=o.id%}"/>
+            </div>
+        </script>
+        <script type="text/x-tmpl" 
+                id="checklist">
+            <div class="page-header">Nytt Protokoll</div>
+            <div class="page">    
                 <label>
                     Namn
                 </label>
@@ -55,12 +83,13 @@
                     <div class="list-item js-list-item">
                         <label>
                             <span class="js-description">{%=o.checkItems[i].description%}</span>
+                            <input type="checkbox"
+                                   class="js-meets-requirements" {% if (o.checkItems[i].meetsRequirements === true) { %} checked{% } else { %}{% } %} />
                         </label>
-                        <input type="checkbox"
-                               class="js-meets-requirements" {% if (o.checkItems[i].meetsRequirements === true) { %} checked{% } else { %}{% } %} />
                         <br>
-                        <div class="comment-section">
-                            <textarea placeholder="Kommentar t.ex. slitet, nyrenoverat eller trasig">{%=o.checkItems[i].comment%}</textarea>
+                        <div>
+                            <textarea class="js-comment"
+                                      placeholder="Kommentar t.ex. slitet, nyrenoverat eller trasig">{%=o.checkItems[i].comment%}</textarea>
                         </div>
                     </div>
                 {% } %}
@@ -71,9 +100,10 @@
         </script>
         <script type="text/x-tmpl" 
                 id="checklist-list">
+            <div class="page-header">Protokoll</div>
             <ul class="check-list">
                 {% for (var i=0; i<o.length; i++) { %}
-                    <li class="js-edit-checklist clickable" data-checklist-id="{%=o[i].id%}">{%=o[i].name%} <i class="fa fa-trash-o js-delete-checklist clickable" data-checklist-id="{%=o[i].id%}"></i></li>
+                    <li class="js-edit-checklist clickable" data-checklist-id="{%=o[i].id%}">{%=o[i].name%}</li>
                 {% } %}
             </ul>
         </script>

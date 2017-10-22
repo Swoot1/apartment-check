@@ -60,6 +60,11 @@ body {
     padding: 1.5rem;
     margin-bottom: 15rem;
 }
+.page-header {
+    background: #00708C;
+    padding: 1rem 1.5rem;
+    color: #DAEBF2;
+}
 .hidden {
     display: none;
 }
@@ -76,7 +81,7 @@ body {
     margin-bottom: 15rem;
 }
 .check-list li {
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
     border-bottom: .1rem solid #1CA5B8;
     color: #012C40;
 }
@@ -127,6 +132,9 @@ input[type=button] {
     background: #1CA5B8;
     color: #fff;
     font-size: 2rem;
+}
+input[type=button].delete {
+    background: #FF404C;
 }
 label {
     font-weight: 700;
