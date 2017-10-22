@@ -37,12 +37,12 @@
             <div class="page-header"><a href="/#/checklists"><i class="fa fa-arrow-left"></i></a></div>
             <div class="page">
                 {% if (o.adUrl && o.adUrl.length) { %} 
-                    <a href="{%=o.adUrl%}">{%=o.name%}</a>
+                    <a href="http://{%=o.adUrl%}">{%=o.name%}</a>
                 {% } else { %}
-                    {%=o.name%}
+                    <span class="js-edit-checklist">{%=o.name%}</span>
                 {% } %}
                 {% for (var i=0; i<o.checkItems.length; i++) { %}
-                    <div class="list-item js-list-item">
+                    <div class="list-item js-list-item js-edit-checklist">
                         <label>
                             <span class="js-description">{%=o.checkItems[i].description%}</span>
                             {% if (o.checkItems[i].meetsRequirements === true) { %}<span class="ok-text">OK!</span>{% } else { %}<span class="not-ok-text">Ej ok</span>{% } %}
@@ -61,7 +61,8 @@
         </script>
         <script type="text/x-tmpl" 
                 id="checklist">
-            <div class="page-header">Nytt Protokoll</div>
+            <div class="page-header"><a href="#"
+                                        class="js-navigate-to-checklist"><i class="fa fa-arrow-left"></i></a></div>
             <div class="page">    
                 <label>
                     Namn
@@ -87,10 +88,8 @@
                                    class="js-meets-requirements" {% if (o.checkItems[i].meetsRequirements === true) { %} checked{% } else { %}{% } %} />
                         </label>
                         <br>
-                        <div>
-                            <textarea class="js-comment"
-                                      placeholder="Kommentar t.ex. slitet, nyrenoverat eller trasig">{%=o.checkItems[i].comment%}</textarea>
-                        </div>
+                        <textarea class="js-comment"
+                                  placeholder="Kommentar t.ex. slitet, nyrenoverat eller trasig">{%=o.checkItems[i].comment%}</textarea>
                     </div>
                 {% } %}
                 <input class="js-save-checklist" 
@@ -103,7 +102,7 @@
             <div class="page-header">Protokoll</div>
             <ul class="check-list">
                 {% for (var i=0; i<o.length; i++) { %}
-                    <li class="js-edit-checklist clickable" data-checklist-id="{%=o[i].id%}">{%=o[i].name%}</li>
+                    <li class="js-view-checklist clickable" data-checklist-id="{%=o[i].id%}">{%=o[i].name%}</li>
                 {% } %}
             </ul>
         </script>
