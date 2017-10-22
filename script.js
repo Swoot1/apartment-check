@@ -120,10 +120,11 @@
         deleteButtons.forEach((deleteButton) => {
             deleteButton.addEventListener('click', (e) => {
                 let userId = window.currentUser.uid;
-                let id = e.target.dataset.checklistId;
-                let checklistToBeDeletedRef = firebase.database().ref('users/' + userId + '/checklists/' + id);
-                checklistToBeDeletedRef.remove();
-                e.stopPropagation();
+                let checklistId = window.location.href.split('/').pop();
+                let checklistToBeDeletedRef = firebase.database().ref('users/' + userId + '/checklists/' + checklistId);
+                checklistToBeDeletedRef.remove().then(() => {
+                    router.navigate('/checklists');
+                });
             });
         });
     }

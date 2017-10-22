@@ -45,7 +45,7 @@
                     <div class="list-item js-list-item">
                         <label>
                             <span class="js-description">{%=o.checkItems[i].description%}</span>
-                            {% if (o.checkItems[i].meetsRequirements === true) { %} OK!{% } else { %}Ej ok{% } %}
+                            {% if (o.checkItems[i].meetsRequirements === true) { %}<span class="ok-text">OK!</span>{% } else { %}<span class="not-ok-text">Ej ok</span>{% } %}
                         </label>
                         <br>
                         <div>

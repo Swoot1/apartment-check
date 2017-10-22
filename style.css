@@ -140,6 +140,12 @@ label {
     font-weight: 700;
     font-size: 1.5rem;
 }
+.ok-text {
+    color: #22B86C;
+}
+.not-ok-text {
+    color: #FF404C;
+}
 @media (min-width: 400px) {
     .nav-bar a {
         font-size: 2.5rem;
