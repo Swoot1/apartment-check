@@ -34,38 +34,40 @@
         <script src="tmpl.min.js"></script>
         <script type="text/x-tmpl" 
                 id="checklist">
-            <label>
-                Namn
+            <div class="page">
+                <label>
+                    Namn
+                </label>
                 <br>
                 <input type="text" 
                        class="js-checklist-name" 
                        value="{%=o.name%}" />
-            </label>
-            <br>
-            <label>
-                Länk till annons
+                <br>
+                <label>
+                    Länk till annons
+                </label>
                 <br>
                 <input type="text" 
                        class="js-checklist-ad-url" 
                        value="{%=o.adUrl%}"/>
-            </label>
-            {% for (var i=0; i<o.checkItems.length; i++) { %}
-                <div class="list-item js-list-item">
-                    <span class="js-description">{%=o.checkItems[i].description%}</span>
-                    <input type="checkbox"
-                           class="js-meets-requirements" {% if (o.checkItems[i].meetsRequirements === true) { %} checked{% } else { %}{% } %} />
-                    <br>
-                    <div class="comment-section">
-                        <span class="js-show-comment clickable">Skriv kommentar</span>
-                        <span class="js-hide-comment hidden clickable">Dölj kommentar</span>
+                
+                {% for (var i=0; i<o.checkItems.length; i++) { %}
+                    <div class="list-item js-list-item">
+                        <label>
+                            <span class="js-description">{%=o.checkItems[i].description%}</span>
+                        </label>
+                        <input type="checkbox"
+                               class="js-meets-requirements" {% if (o.checkItems[i].meetsRequirements === true) { %} checked{% } else { %}{% } %} />
                         <br>
-                        <textarea class="hidden js-comment">{%=o.checkItems[i].comment%}</textarea>
+                        <div class="comment-section">
+                            <textarea placeholder="Kommentar t.ex. slitet, nyrenoverat eller trasig">{%=o.checkItems[i].comment%}</textarea>
+                        </div>
                     </div>
-                </div>
-            {% } %}
-            <input class="js-save-checklist" 
-                   type="button" 
-                   value="Spara" />
+                {% } %}
+                <input class="js-save-checklist" 
+                       type="button" 
+                       value="Spara" />
+            </div>
         </script>
         <script type="text/x-tmpl" 
                 id="checklist-list">
