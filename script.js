@@ -11,7 +11,7 @@
     
     // FirebaseUI config.
     var uiConfig = {
-        signInSuccessUrl: '#/checklists/new',
+        signInSuccessUrl: '#/checklists',
         signInOptions: [
           firebase.auth.GoogleAuthProvider.PROVIDER_ID
         ],
@@ -174,9 +174,9 @@
       let key = '';
       if(window.location.href.split('/').pop() === 'edit'){
           let splittedUrl = window.location.href.split('/');
-          let key = splittedUrl[splittedUrl.length-2];
+          key = splittedUrl[splittedUrl.length-2];
       }else {
-          let key = firebase.database()
+          key = firebase.database()
                             .ref('users/' + userId + '/checklists/')
                             .push()
                             .key;
