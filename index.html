@@ -28,20 +28,20 @@
                 id="checklist-summary">
             <div class="page-header"><a href="/#/checklists"><i class="fa fa-arrow-left"></i></a></div>
             <div class="page">
-                {% if (o.adUrl && o.adUrl.length) { %} 
-                    <a href="http://{%=o.adUrl%}">{%=o.name%}</a>
-                {% } else { %}
-                    <span class="js-edit-checklist">{%=o.name%}</span>
-                {% } %}
+                <h1>
+                    {% if (o.adUrl && o.adUrl.length) { %} 
+                        <a href="http://{%=o.adUrl%}">{%=o.name%}</a>
+                    {% } else { %}
+                        <span class="js-edit-checklist">{%=o.name%}</span>
+                    {% } %}
+                </h1>
                 {% for (var i=0; i<o.checkItems.length; i++) { %}
                     <div class="list-item js-list-item js-edit-checklist">
-                        <label>
-                            <span class="js-description">{%=o.checkItems[i].description%}</span>
-                            {% if (o.checkItems[i].meetsRequirements === true) { %}<span class="ok-text">OK!</span>{% } else { %}<span class="not-ok-text">Ej ok</span>{% } %}
-                        </label>
+                        <span class="js-description">{%=o.checkItems[i].description%}</span>
+                        {% if (o.checkItems[i].meetsRequirements === true) { %}<span class="ok-text">OK!</span>{% } else { %}<span class="not-ok-text">Ej Ok</span>{% } %}
                         <br>
                         <div>
-                            {%=o.checkItems[i].comment%}
+                            <span class="italic">{%=o.checkItems[i].comment%}</span>
                         </div>
                     </div>
                 {% } %}
