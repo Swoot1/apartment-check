@@ -47,7 +47,10 @@ table {
 	border-spacing: 0;
 }
 /* End of css-reset */
-
+html { 
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
 .container {
     margin: auto;
 }
@@ -59,38 +62,53 @@ body {
     display: none;
 }
 .list-item {
-    margin: 20px 0;
+    margin: 2rem 0;
 }
 .clickable {
     cursor: pointer;
 }
-
 .check-list {
-    margin-bottom: 100px;
+    margin-bottom: 10rem;
 }
-
 .check-list li {
-    padding: 20px 10px;
-    border-bottom: 1px solid #1CA5B8;
+    padding: 2rem 1rem;
+    border-bottom: .1rem solid #1CA5B8;
     color: #012C40;
 }
 .nav-bar {
     background: #00708C;
-    min-height: 100px;
-    width: 100%;
+    color: #DAEBF2;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-direction: row;
+    justify-content: space-around;
     position: fixed;
+    left: 0;
+    right: 0;
     bottom: 0;
 }
+.nav-bar a {
+    font-size: 1.5rem;
+    padding: 2rem;
+}
 .nav-bar i.fa{
-    font-size: 50px;
-    color: #DAEBF2;
-    margin-bottom: 10px;
+    font-size: 5rem;
+    margin-bottom: .5rem;
 }
 .nav-bar a, .nav-bar a:visited, .nav-bar a:focus, .nav-bar a:hover, .nav-bar a:active {
     color: #DAEBF2;
     text-decoration: none;
 }
-.nav-bar ul li { 
-    float: left;
-    margin: 10px 20px;
+@media (min-width: 400px) {
+    .nav-bar a {
+        font-size: 2.5rem;
+        padding: 2.5rem;
+    }
+    .nav-bar i.fa{
+        font-size: 7rem;
+    }
 }
