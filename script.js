@@ -182,6 +182,11 @@
                             .key;
       }
       
+      if(!userId || !key) {
+        console.log('Kunde inte spara med userId: \'' + userId + '\' och key: \'' + key +'\'');
+        return;
+      }
+      
       firebase.database()
               .ref('users/' + userId + '/checklists/' + key)
               .set(checklist)
