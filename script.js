@@ -98,17 +98,6 @@
         }); 
       }
     }).resolve();
-
-    document.querySelector('.js-signout')
-            .addEventListener('click', () => {
-                firebase.auth()
-                        .signOut()
-                        .then(function() {
-                          router.navigate('/login');
-                        }).catch(function(error) {
-                          // An error happened. :(
-                        });
-            });
     
     function addEventListeners() {
         let saveButtons = document.querySelectorAll('.js-save-checklist');
@@ -148,6 +137,18 @@
                     let checkListId = splittedUrl[splittedUrl.length-2];
                     router.navigate('/checklists/' + checkListId);
                 }
+            });
+        });
+        let signOutButtons = document.querySelectorAll('.js-signout');
+        signOutButtons.forEach((signOutButton) => {
+            signOutButton.addEventListener('click', () => {
+                firebase.auth()
+                        .signOut()
+                        .then(function() {
+                          router.navigate('/login');
+                        }).catch(function(error) {
+                          // An error happened. :(
+                        });
             });
         });
     }

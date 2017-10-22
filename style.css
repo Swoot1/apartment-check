@@ -110,6 +110,10 @@ body {
     font-size: 5rem;
     margin-bottom: .5rem;
 }
+.page-header a, .page-header a:visited, .page-header a:focus, .pag-headere a:hover, .page-header a:active {
+    color: #DAEBF2;
+    text-decoration: none;
+}
 .nav-bar a, .nav-bar a:visited, .nav-bar a:focus, .nav-bar a:hover, .nav-bar a:active {
     color: #DAEBF2;
     text-decoration: none;
