@@ -1,122 +1,140 @@
-window.checklistData = [
+[
     {
         "description": "Balkong/uteplats",
         "meetsRequirements": false,
-        "comment": ""
+        "comment": "",
+        "exampleComment": "Plats för fyra stolar och bord."
     },
     {
         "description": "Avgift",
         "meetsRequirements": false,
-        "comment": ""
+        "comment": "",
+        "exampleComment": "Hög/normal/låg/orimligt låg."
     },
     {
         "description": "Stambytt",
         "meetsRequirements": false,
-        "comment": ""
+        "comment": "",
+        "exampleComment": "Nej, ska göras inom de närmaste 5 åren kommer innebära en avgiftshöjning."
     },
     {
         "description": "Våningsplan",
         "meetsRequirements": false,
+        "exampleComment": "Ingen insyn, ovanför tvättstugan, två trappor upp",
+        "comment": ""
+    },
+    {
+        "description": "Spis och ugn",
+        "meetsRequirements": false,
+        "exampleComment": "Äldre modell/Helt nytt",
         "comment": ""
     },
     {
         "description": "Förråd",
         "meetsRequirements": false,
+        "exampleComment": "Finns/Finns ej/Stort/Litet/Källare/Vind",
         "comment": ""
     },
     {
         "description": "Parkering",
         "meetsRequirements": false,
+        "exampleComment": "Kostnad per månad/Stora/Små/Möjlighet till garage/Kö",
         "comment": ""
     },
     {
         "description": "Porttelefon",
         "meetsRequirements": false,
+        "exampleComment": "Finns/Finns ej",
         "comment": ""
     },
     {
         "description": "Badrum",
         "meetsRequirements": false,
+        "exampleComment": "Renoverat 2016/Utfört av hantverkare",
         "comment": ""
     },
     {
         "description": "Kök",
         "meetsRequirements": false,
+        "exampleComment": "Slitet/nytt/70-tal",
         "comment": ""
     },
     {
         "description": "Vitvaror",
         "meetsRequirements": false,
+        "exampleComment": "Nya/gamla/5-år gamla",
         "comment": ""
     },
     {
-        "description": "Avstånd till centrum",
+        "description": "Avstånd till jobb/studier/centrum/mataffär",
         "meetsRequirements": false,
-        "comment": ""
-    },
-    {
-        "description": "Avstånd till jobb/studier",
-        "meetsRequirements": false,
-        "comment": ""
-    },
-    {
-        "description": "Avstånd till mataffär",
-        "meetsRequirements": false,
+        "exampleComment": "15 min till stationen med buss/30 min till jobbet",
         "comment": ""
     },
     {
         "description": "Boarea",
         "meetsRequirements": false,
+        "exampleComment": "54 kvadrat/Bra förvaring",
         "comment": ""
     },
     {
         "description": "Pris",
         "meetsRequirements": false,
+        "exampleComment": "Normalt/Ovanligt högt/Mer än vad jag har råd med",
         "comment": ""
     },
     {
         "description": "Föreningens skuldsättning",
         "meetsRequirements": false,
+        "exampleComment": "Låg/hög",
         "comment": ""
     },
     {
         "description": "Hiss",
         "meetsRequirements": false,
+        "exampleComment": "Finns/Finns ej/maxvikt 120 kg",
         "comment": ""
     },
     {
         "description": "Ytskikt",
         "meetsRequirements": false,
+        "exampleComment": "Fräscha/slitna/ok",
         "comment": ""
     },
     {
         "description": "Tv",
         "meetsRequirements": false,
+        "exampleComment": "Ingår i hyran/Finns inkopplat/Beställa själv",
         "comment": ""
     },
     {
         "description": "Internet",
         "meetsRequirements": false,
+        "exampleComment": "Ingår/Ingår ej/Hastighet upp till 250Mbit",
         "comment": ""
     },
     {
         "description": "Planlösning",
         "meetsRequirements": false,
+        "exampleComment": "Korkad/Smart/öppet till köket",
         "comment": ""
     },
     {
-        "description": "Fönster (3 glas?)",
+        "description": "Fönster",
         "meetsRequirements": false,
+        "exampleComment": "3-glas/2-glas/Nya/gamla/Går ej öppna",
         "comment": ""
     },
     {
         "description": "El",
         "meetsRequirements": false,
+        "exampleComment": "1-fas/3-fas/behöver saneras/jordat/ojordat",
         "comment": ""
     },
     {
         "description": "Ventilation",
         "meetsRequirements": false,
+        "exampleComment": "till-luft/från-luft/självdrag",
         "comment": ""
-    },
-];
+    }
+]

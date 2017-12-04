@@ -22,7 +22,6 @@
         <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase-database.js"></script>
-        <script src="check-list.js"></script>
         <script src="tmpl.min.js"></script>
         <script type="text/x-tmpl" 
                 id="checklist-summary">
@@ -38,7 +37,7 @@
                 {% for (var i=0; i<o.checkItems.length; i++) { %}
                     <div class="list-item js-list-item js-edit-checklist">
                         <span class="js-description">{%=o.checkItems[i].description%}</span>
-                        {% if (o.checkItems[i].meetsRequirements === true) { %}<span class="ok-text">OK!</span>{% } else { %}<span class="not-ok-text">Ej Ok</span>{% } %}
+                        {% if (o.checkItems[i].meetsRequirements === true) { %}<span class="ok-text">OK!</span>{% } else { %}<span class="not-ok-text">EJ OK</span>{% } %}
                         <br>
                         <div>
                             <span class="italic">{%=o.checkItems[i].comment%}</span>
@@ -81,7 +80,7 @@
                         </label>
                         <br>
                         <textarea class="js-comment"
-                                  placeholder="Kommentar t.ex. slitet, nyrenoverat eller trasig">{%=o.checkItems[i].comment%}</textarea>
+                                  placeholder="{%=o.checkItems[i].exampleComment%}">{%=o.checkItems[i].comment%}</textarea>
                     </div>
                 {% } %}
                 <input class="js-save-checklist pull-right" 
